@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.messenger.fragments.WebViewFragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/view_wv"
+    android:visibility="gone"
+    android:background="#F7F7F7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/v_header"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:padding="8dp"
+                android:id="@+id/bt_back"
+                android:tint="#fff"
+                android:src="@drawable/ic_chevron_left"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1"
+                android:id="@+id/tv_web_name"
+                android:textColor="#fff"
+                android:text="Facebok - Facebook"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/tv_time_limit"
+                android:textColor="#fff"
+                android:gravity="center_vertical"
+                android:text="00:01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <FrameLayout
+                android:layout_gravity="center|end"
+                android:layout_width="50dp"
+                android:layout_height="match_parent">
+                <ProgressBar
+                    android:layout_gravity="center"
+                    android:id="@+id/loading"
+                    android:indeterminate="true"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/reload"
+                    android:tint="#fff"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_refresh"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/app_name" />
+            </FrameLayout>
+
+        </LinearLayout>
+        <com.messenger.views.QWebView
+            android:id="@+id/wv_load"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</com.messenger.fragments.WebViewFragment>

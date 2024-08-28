@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/v_header"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/bt_back"
+            android:tint="#fff"
+            android:src="@drawable/ic_chevron_left"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textColor="#fff"
+            android:text="Game"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

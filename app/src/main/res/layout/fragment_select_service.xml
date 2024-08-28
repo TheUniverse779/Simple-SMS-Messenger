@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="#ECEBEB"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true">
+    <ProgressBar
+        android:id="@+id/prLoad"
+        android:layout_centerInParent="true"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+    <FrameLayout
+        android:id="@+id/v_header"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/bt_back"
+            android:tint="#fff"
+            android:src="@drawable/ic_chevron_left"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textColor="#fff"
+            android:text="Select Service"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@id/bt_next"
+        android:layout_below="@+id/v_header"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:scrollbars="vertical"
+            android:id="@+id/rv_list_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:layout_marginBottom="10dp"
+        android:id="@+id/bt_next"
+        android:layout_alignParentBottom="true"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:text="Next"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+</RelativeLayout>

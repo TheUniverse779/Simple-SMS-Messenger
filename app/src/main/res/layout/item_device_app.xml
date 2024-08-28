@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="0dp"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/main_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            app:cardElevation="0dp"
+            app:cardCornerRadius="25dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:padding="5dp"
+                android:id="@+id/img_app"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="#222222"
+                android:text="Facebook"
+                android:id="@+id/tv_app_name"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RadioButton
+            android:checked="true"
+            android:background="?selectableItemBackground"
+            android:id="@+id/rd_check"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <FrameLayout
+        android:background="?selectableItemBackground"
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</androidx.cardview.widget.CardView>

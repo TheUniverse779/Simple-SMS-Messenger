@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:layout_width="250dp"
+    tools:ignore="HardcodedText"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <ImageView
+                android:tint="#fff"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_account"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/app_name" />
+        </FrameLayout>
+        <LinearLayout
+            android:id="@+id/bt_account"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="5dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_account"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Accounts"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bt_usage"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="6dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_usage"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Statistics"
+                android:layout_width="0dp"
+                android:layout_height="35dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bt_limit"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="6dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_time_limit"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Time Limit"
+                android:layout_width="0dp"
+                android:layout_height="35dp" />
+        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/bt_lock_screen"-->
+<!--            android:focusable="true"-->
+<!--            android:clickable="true"-->
+<!--            android:padding="5dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            tools:ignore="UseCompoundDrawables">-->
+<!--            <ImageView-->
+<!--                android:padding="5dp"-->
+<!--                android:tint="#fff"-->
+<!--                android:src="@drawable/ic_lock_screen"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:contentDescription="@string/app_name" />-->
+<!--            <TextView-->
+<!--                android:layout_weight="1"-->
+<!--                android:textColor="#fff"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="Lock Screen"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="35dp" />-->
+<!--            <TextView-->
+<!--                android:textSize="13sp"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:id="@+id/tv_is_lock_screen"-->
+<!--                android:textColor="#E6E6E6"-->
+<!--                android:gravity="center"-->
+<!--                android:text="ON"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="35dp" />-->
+<!--        </LinearLayout>-->
+        <LinearLayout
+            android:id="@+id/bt_passcode"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="5dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_lock"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Passcode Lock"
+                android:layout_width="0dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:textSize="13sp"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/tv_is_lock"
+                android:textColor="#E6E6E6"
+                android:gravity="center"
+                android:text="ON"
+                android:layout_width="40dp"
+                android:layout_height="35dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        <LinearLayout
+            android:id="@+id/bt_rate"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="5dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_star"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Rate &amp; Review"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bt_feedback"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="5dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_mail"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bt_share"
+            android:focusable="true"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:padding="5dp"
+                android:tint="#fff"
+                android:src="@drawable/ic_share"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:textColor="#fff"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Invite Friend"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

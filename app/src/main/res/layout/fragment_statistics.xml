@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="#ECEBEB"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true">
+    <ProgressBar
+        android:id="@+id/pb_load"
+        android:layout_centerInParent="true"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+    <FrameLayout
+        android:id="@+id/v_header"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/bt_back"
+            android:tint="#fff"
+            android:src="@drawable/ic_chevron_left"
+            android:layout_width="50dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textColor="#fff"
+            android:text="Statistics"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@+id/v_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.messenger.views.PieChartView
+                android:id="@+id/pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/transparent"
+                android:paddingBottom="40dp"
+                app:circleRadius="100dp"
+                app:textSize="13sp"
+                tools:ignore="RtlSymmetry" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:scrollbars="vertical"
+                android:id="@+id/rv_usage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

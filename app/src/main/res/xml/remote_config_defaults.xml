@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+
+    <entry>
+        <key>native_ads</key>
+        <value>no</value>
+    </entry>
+
+
+    <entry>
+        <key>game1</key>
+        <value>https://dcrespo3d.github.io/2048-html5/</value>
+    </entry>
+
+    <entry>
+        <key>game2</key>
+        <value>https://chaping.github.io/game/flappy-bird/</value>
+    </entry>
+
+
+</defaultsMap>

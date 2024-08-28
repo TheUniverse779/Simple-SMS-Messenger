@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true">
+    <ImageView
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:padding="12dp"
+        android:id="@+id/bt_back"
+        android:tint="#fff"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/app_name" />
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iconLock"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/app_name" />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textColor="#fff"
+            android:text="Enter Passcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/viewIn"
+            android:paddingTop="10dp"
+            android:gravity="center"
+            tools:ignore="ContentDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgIn1"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_indicator_lock"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+            <ImageView
+                android:id="@+id/imgIn2"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_indicator_lock"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+            <ImageView
+                android:id="@+id/imgIn3"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_indicator_lock"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+            <ImageView
+                android:id="@+id/imgIn4"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_indicator_lock"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/rcvKeyInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple SMS Messenger</string>
+    <string name="app_name">Messenger</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="srn_ex_no_menu_view">No view for menu provided. You must either call .withMenuView(View) or pass a valid resource id to .withMenuLayout(int)</string>
+    <string name="srn_ex_bad_content_view">Your content view must contain exactly one child. Make sure you call inject() after setContentView().</string>
+    <string name="account_info_text">
+        Please province account\'s name in order to help separate multiple account in same service.
+    </string>
+
+    <string name="permission_denied">Permission denied, cannot complete action</string>
+    <string name="wv_menu_share_img">Sharing image…</string>
+    <string name="wv_menu_copy_link_to_clip">Link copied to clipboard</string>
+    <string name="wv_menu_save_image">Save image</string>
+    <string name="wv_menu_share_image">Share image</string>
+    <string name="wv_menu_copy_image_link">Copy image link</string>
+    <string name="wv_menu_share_link">Share link</string>
+    <string name="wv_menu_copy_link">Copy link</string>
+
+    <string name="fb_fixedBar" translatable="false">
+		#header{ position: fixed; z-index: 12; top: 0px; }
+
+        #root{ padding-top: 44px; }
+
+        .flyout{ max-height: $spx; overflow-y: scroll;  }
+
+        /*lock the "show all.." message*/
+		.item.more {
+		position: fixed;
+		bottom: 0px;
+		text-align: center !important;
+		}
+	</string>
+
+    <string name="fb_Css" translatable="false">
+		javascript:function addStyle(css) {
+		var node = document.createElement(\'style\');
+		node.innerHTML = css;
+        document.body.appendChild(node);
+		}
+		addStyle(\'$css\');
+	</string>
+    <string name="new_pass_code">Enter new passcode</string>
+    <string name="turn_passcode_off">Turn passcode off</string>
+    <string name="enter_passcode_again">Enter passcode again</string>
+    <string name="passcode_on">Passcode On</string>
+    <string name="passcode_off">Passcode Off</string>
+    <string name="enter_passcode">Enter passcode</string>
+
+    <string name="title_activity_full_screen_game">Game</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="app_launcher_name">SMS Messenger</string>
     <string name="type_a_message">Type a message…</string>
     <string name="message_not_sent_short">Message not sent</string>

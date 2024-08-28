@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="#FAFAFA"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="#444"
+            android:padding="10dp"
+            android:layout_marginStart="5dp"
+            android:id="@+id/tv_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:gravity="center"
+            android:text="Enable Quick Access Feature"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/access_p"
+                android:adjustViewBounds="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:gravity="end"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#C6505050"
+                android:background="?selectableItemBackground"
+                android:clickable="true"
+                android:id="@+id/bt_cancel"
+                android:gravity="center"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:text="Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:focusable="true" />
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="#0091EA"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:clickable="true"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:id="@+id/bt_give_permission"
+                    android:textColor="#fff"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center"
+                    android:text="Give Permission"
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:focusable="true" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

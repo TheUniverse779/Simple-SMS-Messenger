@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_above="@+id/banner"
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            app:elevation="0dp"
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <androidx.appcompat.widget.Toolbar
+                app:elevation="0dp"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary" >
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+        <FrameLayout
+            android:layout_below="@+id/app_bar"
+            android:id="@+id/view_tab"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabLayout
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                android:layout_marginBottom="4dp"
+                app:tabMode="auto"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorColor="#fff"
+                app:tabTextColor="#EBEBEB"
+                app:tabSelectedTextColor="#fff"
+                android:id="@+id/tab_layout_main"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+        </FrameLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:background="#FFFFFF"
+            android:layout_below="@+id/view_tab"
+            android:id="@+id/view_pager_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <include android:id="@+id/banner" layout="@layout/ads_footer"/>
+    <include layout="@layout/fragment_webview"/>
+</RelativeLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_icon"
+                android:padding="8dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:layout_marginStart="5dp"
+                android:id="@+id/tv_title"
+                android:layout_toEndOf="@+id/img_icon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:gravity="center"
+                android:text="New Update Message"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+            <TextView
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/img_icon"
+                android:id="@+id/tv_time"
+                android:layout_below="@+id/tv_title"
+                android:gravity="center"
+                android:text="8:30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:padding="10dp"
+                android:ellipsize="end"
+                android:maxLines="6"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:id="@+id/tv_message"
+                android:layout_below="@+id/tv_time"
+                android:text="Vui lòng update Facebook lên phiên bản moi nhat để thể hiện các tính năng!"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/bt_cancel"
+                android:layout_marginTop="20dp"
+                android:layout_toStartOf="@+id/bt_ok"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Cancel"
+                android:layout_below="@+id/tv_message"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/bt_ok"
+                android:textColor="#fff"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Reply"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tv_message"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView
+        android:textSize="12sp"
+        android:background="#FFAB00"
+        android:id="@+id/tv_ads"
+        android:text="Ad"
+        android:paddingEnd="2dp"
+        android:paddingStart="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.cardview.widget.CardView>

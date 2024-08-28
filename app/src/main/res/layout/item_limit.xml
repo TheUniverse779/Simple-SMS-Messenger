@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="7dp"
+    app:cardElevation="0dp"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:padding="5dp"
+            android:id="@+id/img_app"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:contentDescription="@string/app_name" />
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_vertical"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="#222222"
+                android:text="Facebook"
+                android:id="@+id/tv_app_name"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:weightSum="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <SeekBar
+                    android:id="@+id/sb_limit"
+                    android:progress="10"
+                    android:max="120"
+                    android:maxHeight="10dp"
+                    android:minWidth="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_time_limit"
+                    android:textColor="@color/colorPrimary"
+                    android:text="5 miutue"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

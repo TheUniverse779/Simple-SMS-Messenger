@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <com.messenger.views.PieChartView
+        android:id="@+id/pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@android:color/transparent"
+        android:paddingBottom="40dp"
+        app:circleRadius="100dp"
+        app:textSize="13sp"
+        tools:ignore="RtlSymmetry" />
+</FrameLayout>

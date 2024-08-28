@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    app:cardElevation="0dp"
+    android:id="@+id/native_ads"
+    app:cardCornerRadius="7dp"
+    app:cardBackgroundColor="#F2F6F8"
+    android:layout_marginTop="10dp"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<!--        <TextView-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:text="Ads loading.."-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+
+        <com.google.android.gms.ads.nativead.NativeAdView
+            android:visibility="invisible"
+            android:id="@+id/ad_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:background="@drawable/bg_round_1_stroke"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.gms.ads.nativead.MediaView
+                    android:visibility="gone"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/ad_media"
+                    android:layout_gravity="center"
+                    android:layout_width="250dp"
+                    android:layout_height="120dp" />
+
+                <RelativeLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginStart="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="#88DADADA"
+                        android:id="@+id/cv_icon"
+                        app:cardElevation="0dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:src="#88DADADA"
+                            android:scaleType="centerCrop"
+                            android:id="@+id/ad_icon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp" />
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@+id/cv_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp"
+                            android:ellipsize="end"
+                            android:paddingStart="5dp"
+                            android:id="@+id/ad_headline"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+                        <TextView
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:textSize="13sp"
+                            android:id="@+id/ad_body"
+                            android:paddingStart="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_round"
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="end"
+                    android:textColor="#FFFFFF"
+                    android:text="Install"
+                    android:id="@+id/ad_call_to_action"
+                    android:padding="6dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ad_attribution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:text="Ad"
+                android:background="#FFCC66"
+                android:width="15dp"
+                android:height="15dp"/>
+        </com.google.android.gms.ads.nativead.NativeAdView>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

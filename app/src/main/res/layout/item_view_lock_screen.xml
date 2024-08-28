@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:clickable="true"
+    android:layout_height="match_parent"
+    android:focusable="true">
+    <LinearLayout
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/viewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextClock
+            android:fontFamily="sans-serif-thin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="11:50"
+            android:format24Hour="hh:mm"
+            android:format12Hour="hh:mm"
+            android:layout_marginTop="7dp"
+            android:id="@+id/tvTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
+            android:textSize="50sp" />
+
+        <TextView
+            android:fontFamily="sans-serif-thin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="T7, Ngày 23 tháng 4"
+            android:textColor="@android:color/background_light"
+            android:textSize="27sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_above="@+id/bottom"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/lnFcShow"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:id="@+id/btn_facebook"
+            android:padding="8dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/facebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:focusable="true" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:background="?selectableItemBackground"
+            android:id="@+id/btn_messenger"
+            android:padding="8dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/messenger"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:background="?selectableItemBackground"
+            android:id="@+id/btn_instagram"
+            android:padding="8dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/instagram"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:background="?selectableItemBackground"
+            android:id="@+id/btn_twitter"
+            android:padding="8dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/twitter"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_below="@+id/viewTime"
+        android:layout_above="@+id/lnFcShow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/ads_big"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="30dp"
+        android:id="@+id/bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:fontFamily="sans-serif-thin"
+            android:layout_alignParentBottom="true"
+            android:textColor="#fff"
+            android:id="@+id/tv_unlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Swipe up to unlock"
+            android:textSize="19sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
