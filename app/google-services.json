@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "761170228827",
+    "firebase_url": "https://mess4-9a590.firebaseio.com",
+    "project_id": "mess4-9a590",
+    "storage_bucket": "mess4-9a590.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761170228827:android:5678847a132190c2",
+        "android_client_info": {
+          "package_name": "com.simplemobiletools.smsmessenger.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761170228827-bh34iqi32vlf6p5f1vds6dcedq9e7a0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzAZVVuXf_xPyiGDLHAK_xMLNvv_E1j6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761170228827-bh34iqi32vlf6p5f1vds6dcedq9e7a0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

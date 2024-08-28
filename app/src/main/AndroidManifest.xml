@@ -67,7 +67,7 @@
     <application
         android:usesCleartextTraffic="true"
         tools:replace="android:label"
-        android:name=".App"
+        android:name="com.messenger.App"
         android:allowBackup="true"
         android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"
@@ -583,7 +583,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7057107138215897~5082665169" />
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity android:name="com.google.android.gms.ads.AdActivity" />
         <activity android:name="com.messenger.activities.OverLay" android:theme="@style/noAnimTheme" android:screenOrientation="portrait" />

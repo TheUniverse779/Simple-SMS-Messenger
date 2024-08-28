@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.konan.properties.Properties
 import java.io.FileInputStream
 
 plugins {
+    id("com.google.gms.google-services")
     alias(libs.plugins.android)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
@@ -119,4 +120,6 @@ dependencies {
     implementation ("pl.bclogic:pulsator4droid:1.0.3")
     implementation ("com.google.firebase:firebase-analytics:21.2.0")
     implementation ("com.google.firebase:firebase-config:21.2.0")
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
 }
+

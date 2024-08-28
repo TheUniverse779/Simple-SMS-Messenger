@@ -26,6 +26,7 @@ import com.messenger.helper.SqDatabase;
 import com.messenger.models.MessApp;
 import com.messenger.utils.Constant;
 import com.messenger.utils.PreferenceUtil;
+import com.simplemobiletools.smsmessenger.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -89,20 +90,23 @@ public class HomeSocialFragment extends BaseFragment {
         tvCountAccount = view.findViewById(R.id.tv_count_account);
 
 
-        if(PreferenceUtil.getInstance(activity).getValue(Constant.SharePrefKey.GAME, "no").equals("yes")){
-            view.findViewById(R.id.layoutGame).setVisibility(View.VISIBLE);
-        }else {
-            view.findViewById(R.id.layoutGame).setVisibility(View.GONE);
-        }
+//        if(PreferenceUtil.getInstance(activity).getValue(Constant.SharePrefKey.GAME, "no").equals("yes")){
+//            view.findViewById(R.id.layoutGame).setVisibility(View.VISIBLE);
+//        }else {
+//            view.findViewById(R.id.layoutGame).setVisibility(View.GONE);
+//        }
 
 
         view.findViewById(R.id.btn2048).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyAds.showInterFull(activity, (value, where) -> {
-                    HTML5Activity.linkGame = PreferenceUtil.getInstance(activity).getValue(Constant.SharePrefKey.GAME1, "https://dcrespo3d.github.io/2048-html5/");
-                    startActivity(new Intent(getContext(), HTML5Activity.class));
-                });
+//                MyAds.showInterFull(activity, (value, where) -> {
+//                    HTML5Activity.linkGame = PreferenceUtil.getInstance(activity).getValue(Constant.SharePrefKey.GAME1, "https://dcrespo3d.github.io/2048-html5/");
+//                    startActivity(new Intent(getContext(), HTML5Activity.class));
+//                });
+
+
+                startActivity(new Intent(activity, MainActivity.class));
 
             }
         });
@@ -155,6 +159,7 @@ public class HomeSocialFragment extends BaseFragment {
         mAdd.setOnTouchListener(new OnTouch());
 
         rippleView.start();
+
     }
 
     private void setupUser() {
