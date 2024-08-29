@@ -28,8 +28,8 @@ android {
         applicationId = "com.messenger.allprivate"
         minSdk = project.libs.versions.app.build.minimumSDK.get().toInt()
         targetSdk = project.libs.versions.app.build.targetSDK.get().toInt()
-        versionName = project.libs.versions.app.version.versionName.get()
-        versionCode = project.libs.versions.app.version.versionCode.get().toInt()
+        versionName = "1.0.0"
+        versionCode = 1
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -87,7 +87,7 @@ android {
         kotlinOptions.jvmTarget = project.libs.versions.app.build.kotlinJVMTarget.get()
     }
 
-    namespace = libs.versions.app.version.appId.get()
+    namespace = "com.simplemobiletools.smsmessenger"
 
     lint {
         checkReleaseBuilds = false
