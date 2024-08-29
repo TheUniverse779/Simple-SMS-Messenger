@@ -1,6 +1,6 @@
 [versions]
 #jetbrains
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 kotlinxSerializationJson = "1.5.1"
 kotlin-immutable-collections = "0.3.6"
 #KSP

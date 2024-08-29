@@ -96,7 +96,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.simple.mobile.tools.commons)
+//    implementation(libs.simple.mobile.tools.commons)
+//    implementation(projects.commons)
+    implementation(project(":commons"))
     implementation(libs.eventbus)
     implementation(libs.indicator.fast.scroll)
     implementation(libs.android.smsmms)
