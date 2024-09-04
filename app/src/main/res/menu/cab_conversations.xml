@@ -21,11 +21,11 @@
         android:showAsAction="always"
         android:title="@string/dial_number"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/cab_block_number"
-        android:icon="@drawable/ic_minus_circle_vector"
-        android:title="@string/block_number"
-        app:showAsAction="ifRoom" />
+<!--    <item-->
+<!--        android:id="@+id/cab_block_number"-->
+<!--        android:icon="@drawable/ic_minus_circle_vector"-->
+<!--        android:title="@string/block_number"-->
+<!--        app:showAsAction="ifRoom" />-->
     <item
         android:id="@+id/cab_archive"
         android:icon="@drawable/ic_archive_vector"
@@ -66,5 +66,11 @@
         android:id="@+id/cab_select_all"
         android:icon="@drawable/ic_select_all_vector"
         android:title="@string/select_all"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/cab_protect"
+        android:icon="@drawable/ic_select_all_vector"
+        android:title="Protect this message"
         app:showAsAction="ifRoom" />
 </menu>

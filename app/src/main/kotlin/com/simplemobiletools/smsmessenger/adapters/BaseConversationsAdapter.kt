@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.messenger.utils.PreferenceUtil
 import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
 import com.simplemobiletools.commons.adapters.MyRecyclerViewListAdapter
 import com.simplemobiletools.commons.extensions.*
@@ -180,6 +183,38 @@ abstract class BaseConversationsAdapter(
 
         override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean {
             return Conversation.areContentsTheSame(oldItem, newItem)
+        }
+    }
+
+    public fun getAllProtectedMess(): ArrayList<String>{
+        var messString = PreferenceUtil.getInstance(activity).getValue("protectedMess", "ok")
+        if (messString == "ok"){
+            return ArrayList<String>()
+        }else{
+            val gson = Gson()
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            return gson.fromJson(messString, type)
+        }
+    }
+
+    public fun removeDuplicates(arrayList: ArrayList<String>): ArrayList<String> {
+        return ArrayList(arrayList.toSet())
+    }
+
+    public fun addProtectedMess(mess:ArrayList<String>){
+        var messString = PreferenceUtil.getInstance(activity).getValue("protectedMess", "ok")
+        if (messString == "ok"){
+            var list = ArrayList<String>()
+            list.addAll(mess)
+            PreferenceUtil.getInstance(activity).setValue("protectedMess", Gson().toJson(list))
+        }else{
+            val gson = Gson()
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            var list : ArrayList<String> =  gson.fromJson(messString, type)
+            list.addAll(mess)
+            val uniqueArrayList = removeDuplicates(list)
+            PreferenceUtil.getInstance(activity).setValue("protectedMess", Gson().toJson(uniqueArrayList))
+
         }
     }
 }

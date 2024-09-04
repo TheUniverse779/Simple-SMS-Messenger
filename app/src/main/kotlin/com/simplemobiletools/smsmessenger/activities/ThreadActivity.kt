@@ -257,8 +257,8 @@ class ThreadActivity : SimpleActivity() {
             findItem(R.id.unarchive).isVisible = threadItems.isNotEmpty() && conversation?.isArchived == true && !isRecycleBin && archiveAvailable
             findItem(R.id.rename_conversation).isVisible = participants.size > 1 && conversation != null && !isRecycleBin
             findItem(R.id.conversation_details).isVisible = conversation != null && !isRecycleBin
-            findItem(R.id.block_number).title = addLockedLabelIfNeeded(com.simplemobiletools.commons.R.string.block_number)
-            findItem(R.id.block_number).isVisible = isNougatPlus() && !isRecycleBin
+//            findItem(R.id.block_number).title = addLockedLabelIfNeeded(com.simplemobiletools.commons.R.string.block_number)
+//            findItem(R.id.block_number).isVisible = isNougatPlus() && !isRecycleBin
             findItem(R.id.dial_number).isVisible = participants.size == 1 && !isSpecialNumber() && !isRecycleBin
             findItem(R.id.manage_people).isVisible = !isSpecialNumber() && !isRecycleBin
             findItem(R.id.mark_as_unread).isVisible = threadItems.isNotEmpty() && !isRecycleBin
@@ -277,7 +277,7 @@ class ThreadActivity : SimpleActivity() {
             }
 
             when (menuItem.itemId) {
-                R.id.block_number -> tryBlocking()
+//                R.id.block_number -> tryBlocking()
                 R.id.delete -> askConfirmDelete()
                 R.id.restore -> askConfirmRestoreAll()
                 R.id.archive -> archiveConversation()

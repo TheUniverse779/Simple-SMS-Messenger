@@ -12,6 +12,9 @@ import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.messenger.utils.PreferenceUtil
 import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
@@ -172,11 +175,11 @@ class MainActivity : SimpleActivity() {
 
         binding.mainMenu.getToolbar().setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
+//                R.id.more_apps_from_us -> launchMoreAppsFromUsIntent()
                 R.id.show_recycle_bin -> launchRecycleBin()
                 R.id.show_archived -> launchArchivedConversations()
-                R.id.settings -> launchSettings()
-                R.id.about -> launchAbout()
+//                R.id.settings -> launchSettings()
+//                R.id.about -> launchAbout()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
@@ -185,7 +188,7 @@ class MainActivity : SimpleActivity() {
 
     private fun refreshMenuItems() {
         binding.mainMenu.getToolbar().menu.apply {
-            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)
+//            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)
             findItem(R.id.show_recycle_bin).isVisible = config.useRecycleBin
             findItem(R.id.show_archived).isVisible = config.isArchiveAvailable
         }
@@ -447,12 +450,64 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun handleConversationClick(any: Any) {
-        Intent(this, ThreadActivity::class.java).apply {
-            val conversation = any as Conversation
-            putExtra(THREAD_ID, conversation.threadId)
-            putExtra(THREAD_TITLE, conversation.title)
-            putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
-            startActivity(this)
+        val conversation = any as Conversation
+
+        var listProtected = getAllProtectedMess();
+
+        if (listProtected.size == 0){
+            Intent(this, ThreadActivity::class.java).apply {
+                putExtra(THREAD_ID, conversation.threadId)
+                putExtra(THREAD_TITLE, conversation.title)
+                putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
+                startActivity(this)
+            }
+        }else{
+            if(checkMessInProtectOrNot(conversation.threadId.toString())){
+                handleAppPasswordProtection {
+                    wasProtectionHandled = it
+                    if (it) {
+                        Intent(this, ThreadActivity::class.java).apply {
+                            putExtra(THREAD_ID, conversation.threadId)
+                            putExtra(THREAD_TITLE, conversation.title)
+                            putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
+                            startActivity(this)
+                        }
+                    } else {
+//                finish()
+                    }
+                }
+            }else{
+                Intent(this, ThreadActivity::class.java).apply {
+                    putExtra(THREAD_ID, conversation.threadId)
+                    putExtra(THREAD_TITLE, conversation.title)
+                    putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
+                    startActivity(this)
+                }
+            }
+        }
+
+
+
+    }
+
+    public fun checkMessInProtectOrNot(id : String): Boolean{
+        var messProtected = getAllProtectedMess();
+        for (i in 0 until messProtected.size){
+            if(id == messProtected[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public fun getAllProtectedMess(): ArrayList<String>{
+        var messString = PreferenceUtil.getInstance(this).getValue("protectedMess", "ok")
+        if (messString == "ok"){
+            return ArrayList<String>()
+        }else{
+            val gson = Gson()
+            val type = object : TypeToken<ArrayList<String>>() {}.type
+            return gson.fromJson(messString, type)
         }
     }
 
@@ -604,4 +659,7 @@ class MainActivity : SimpleActivity() {
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
+
+
+
 }

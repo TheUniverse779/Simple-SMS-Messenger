@@ -2,7 +2,12 @@ package com.simplemobiletools.smsmessenger.adapters
 
 import android.content.Intent
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
+import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.messenger.utils.PreferenceUtil
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FeatureLockedDialog
 import com.simplemobiletools.commons.extensions.*
@@ -31,8 +36,8 @@ class ConversationsAdapter(
         val archiveAvailable = activity.config.isArchiveAvailable
 
         menu.apply {
-            findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(com.simplemobiletools.commons.R.string.block_number)
-            findItem(R.id.cab_block_number).isVisible = isNougatPlus()
+//            findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(com.simplemobiletools.commons.R.string.block_number)
+//            findItem(R.id.cab_block_number).isVisible = isNougatPlus()
             findItem(R.id.cab_add_number_to_contact).isVisible = isSingleSelection && !isGroupConversation
             findItem(R.id.cab_dial_number).isVisible = isSingleSelection && !isGroupConversation && !isShortCodeWithLetters(selectedConversation.phoneNumber)
             findItem(R.id.cab_copy_number).isVisible = isSingleSelection && !isGroupConversation
@@ -51,7 +56,7 @@ class ConversationsAdapter(
 
         when (id) {
             R.id.cab_add_number_to_contact -> addNumberToContact()
-            R.id.cab_block_number -> tryBlocking()
+//            R.id.cab_block_number -> tryBlocking()
             R.id.cab_dial_number -> dialNumber()
             R.id.cab_copy_number -> copyNumberToClipboard()
             R.id.cab_delete -> askConfirmDelete()
@@ -62,6 +67,10 @@ class ConversationsAdapter(
             R.id.cab_pin_conversation -> pinConversation(true)
             R.id.cab_unpin_conversation -> pinConversation(false)
             R.id.cab_select_all -> selectAll()
+            R.id.cab_protect -> {
+                protect()
+            }
+
         }
     }
 
@@ -234,6 +243,25 @@ class ConversationsAdapter(
         }
     }
 
+    private fun protect() {
+        if (selectedKeys.isEmpty()) {
+            return
+        }
+
+        val conversationsMarkedAsRead = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+        var list = ArrayList<String>()
+        ensureBackgroundThread {
+            conversationsMarkedAsRead.forEach {
+//                Toast.makeText(activity, it.threadId.toString(), Toast.LENGTH_LONG).show();
+                Log.e("hihihihihiihii", it.threadId.toString())
+                list.add(it.threadId.toString())
+                addProtectedMess(list)
+            }
+
+            refreshConversations()
+        }
+    }
+
     private fun markAsUnread() {
         if (selectedKeys.isEmpty()) {
             return
@@ -290,4 +318,6 @@ class ConversationsAdapter(
             finishActMode()
         }
     }
+
+
 }
