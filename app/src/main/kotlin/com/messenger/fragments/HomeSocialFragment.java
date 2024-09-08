@@ -100,13 +100,12 @@ public class HomeSocialFragment extends BaseFragment {
         view.findViewById(R.id.btn2048).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                MyAds.showInterFull(activity, (value, where) -> {
-//                    HTML5Activity.linkGame = PreferenceUtil.getInstance(activity).getValue(Constant.SharePrefKey.GAME1, "https://dcrespo3d.github.io/2048-html5/");
-//                    startActivity(new Intent(getContext(), HTML5Activity.class));
-//                });
+                MyAds.showInterFull(activity, (value, where) -> {
+                    HTML5Activity.linkGame = PreferenceUtil.getInstance(activity).getValue(Constant.SharePrefKey.GAME1, "https://dcrespo3d.github.io/2048-html5/");
+                    startActivity(new Intent(getContext(), HTML5Activity.class));
+                });
 
 
-                startActivity(new Intent(activity, MainActivity.class));
 
             }
         });
@@ -147,7 +146,14 @@ public class HomeSocialFragment extends BaseFragment {
 
     @SuppressLint("SetTextI18n")
     public void updateData(){
-        mainAdapter.setData(SqDatabase.getDb().getMessApps(activity,true));
+        ArrayList<MessApp> messApps = SqDatabase.getDb().getMessApps(activity,true);
+        MessApp messApp = new MessApp();
+        messApp.setName("Message");
+        messApp.setUsename("Message");
+        messApp.setCheck(true);
+        messApp.setIcon("message");
+        messApps.add(0,messApp);
+        mainAdapter.setData(messApps);
         tvCountAccount.setText(mainAdapter.getItemCount()+" Account");
     }
 
@@ -178,8 +184,14 @@ public class HomeSocialFragment extends BaseFragment {
         rvApps.setAdapter(mainAdapter = new AppMainAdapter(activity, messApps) {
             @Override
             public void OnItemClick(MessApp messApp, int position) {
-                MyAds.showInterFull(activity, (value, where) ->
+                if(messApp.getName().equals("Message")){
+                    MyAds.showInterFull(activity, (value, where) ->
+                        startActivity(new Intent(activity, MainActivity.class)));
+                }else {
+                    MyAds.showInterFull(activity, (value, where) ->
                         activity.mWebView.start(messApp));
+                }
+
 
             }
 

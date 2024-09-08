@@ -10,10 +10,9 @@ import com.google.gson.reflect.TypeToken
 import com.messenger.utils.PreferenceUtil
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FeatureLockedDialog
+import com.simplemobiletools.commons.dialogs.SecurityDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.KEY_PHONE
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.helpers.isNougatPlus
+import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.views.MyRecyclerView
 import com.simplemobiletools.smsmessenger.R
 import com.simplemobiletools.smsmessenger.activities.SimpleActivity
@@ -248,19 +247,48 @@ class ConversationsAdapter(
             return
         }
 
-        val conversationsMarkedAsRead = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
-        var list = ArrayList<String>()
-        ensureBackgroundThread {
-            conversationsMarkedAsRead.forEach {
-//                Toast.makeText(activity, it.threadId.toString(), Toast.LENGTH_LONG).show();
-                Log.e("hihihihihiihii", it.threadId.toString())
-                list.add(it.threadId.toString())
-                addProtectedMess(list)
-            }
 
-            refreshConversations()
+        if(!activity.config.isAppPasswordProtectionOn) {
+            val tabToShow = if (activity.config.isAppPasswordProtectionOn) activity.config.appProtectionType else SHOW_ALL_TABS
+            SecurityDialog(activity, activity.config.appPasswordHash, tabToShow) { hash, type, success ->
+                if (success) {
+                    val hasPasswordProtection = activity.config.isAppPasswordProtectionOn
+                    activity.config.isAppPasswordProtectionOn = !hasPasswordProtection
+                    activity.config.appPasswordHash = if (hasPasswordProtection) "" else hash
+                    activity.config.appProtectionType = type
+
+                    if (activity.config.isAppPasswordProtectionOn) {
+                        val confirmationTextId = if (activity.config.appProtectionType == PROTECTION_FINGERPRINT) {
+                            com.simplemobiletools.commons.R.string.fingerprint_setup_successfully
+                        } else {
+                            com.simplemobiletools.commons.R.string.protection_setup_successfully
+                        }
+
+                        ConfirmationDialog(activity, "", confirmationTextId, com.simplemobiletools.commons.R.string.ok, 0) { }
+
+
+
+                    }
+                }
+            }
+        }else{
+            val conversationsMarkedAsRead = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+            var list = ArrayList<String>()
+            ensureBackgroundThread {
+                conversationsMarkedAsRead.forEach {
+                    list.add(it.threadId.toString())
+                    addProtectedMess(list)
+                }
+
+                refreshConversations()
+            }
         }
+
+
+
+
     }
+
 
     private fun markAsUnread() {
         if (selectedKeys.isEmpty()) {

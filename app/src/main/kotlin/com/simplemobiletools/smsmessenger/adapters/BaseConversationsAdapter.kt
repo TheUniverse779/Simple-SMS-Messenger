@@ -114,6 +114,7 @@ abstract class BaseConversationsAdapter(
     }
 
     private fun setupView(view: View, conversation: Conversation) {
+        var allMessProtect = getAllProtectedMess();
         ItemConversationBinding.bind(view).apply {
             root.setupViewBackground(activity)
             val smsDraft = drafts[conversation.threadId]
@@ -125,14 +126,34 @@ abstract class BaseConversationsAdapter(
 
             conversationFrame.isSelected = selectedKeys.contains(conversation.hashCode())
 
+            var check = false;
+            for (i in 0 until allMessProtect.size){
+                if(allMessProtect[i] == conversation.threadId.toString()){
+                    check = true
+                    break
+                }
+            }
+
             conversationAddress.apply {
-                text = conversation.title
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 1.2f)
+                if(check){
+                    text = "*****"
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 1.2f)
+                }else{
+                    text = conversation.title
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 1.2f)
+                }
+
             }
 
             conversationBodyShort.apply {
-                text = smsDraft ?: conversation.snippet
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.9f)
+                if(check){
+                    text = "*****"
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.9f)
+                }else{
+                    text = smsDraft ?: conversation.snippet
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.9f)
+                }
+
             }
 
             conversationDate.apply {

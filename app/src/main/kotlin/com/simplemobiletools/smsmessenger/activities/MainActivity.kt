@@ -14,6 +14,7 @@ import android.text.TextUtils
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.messenger.ads.MyAds
 import com.messenger.utils.PreferenceUtil
 import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
 import com.simplemobiletools.commons.extensions.*
@@ -26,7 +27,9 @@ import com.simplemobiletools.smsmessenger.adapters.ConversationsAdapter
 import com.simplemobiletools.smsmessenger.adapters.SearchResultsAdapter
 import com.simplemobiletools.smsmessenger.databinding.ActivityMainBinding
 import com.simplemobiletools.smsmessenger.extensions.*
-import com.simplemobiletools.smsmessenger.helpers.*
+import com.simplemobiletools.smsmessenger.helpers.SEARCHED_MESSAGE_ID
+import com.simplemobiletools.smsmessenger.helpers.THREAD_ID
+import com.simplemobiletools.smsmessenger.helpers.THREAD_TITLE
 import com.simplemobiletools.smsmessenger.models.Conversation
 import com.simplemobiletools.smsmessenger.models.Events
 import com.simplemobiletools.smsmessenger.models.Message
@@ -62,17 +65,22 @@ class MainActivity : SimpleActivity() {
             useTopSearchMenu = true
         )
 
+//        MyAds.initBannerIds(this@MainActivity)
+
         if (savedInstanceState == null) {
             checkAndDeleteOldRecycleBinMessages()
-            handleAppPasswordProtection {
-                wasProtectionHandled = it
-                if (it) {
-                    clearAllMessagesIfNeeded {
-                        loadMessages()
-                    }
-                } else {
-                    finish()
-                }
+//            handleAppPasswordProtection {
+//                wasProtectionHandled = it
+//                if (it) {
+//                    clearAllMessagesIfNeeded {
+//                        loadMessages()
+//                    }
+//                } else {
+//                    finish()
+//                }
+//            }
+            clearAllMessagesIfNeeded {
+                loadMessages()
             }
         }
 
@@ -137,20 +145,21 @@ class MainActivity : SimpleActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        wasProtectionHandled = savedInstanceState.getBoolean(WAS_PROTECTION_HANDLED, false)
-
-        if (!wasProtectionHandled) {
-            handleAppPasswordProtection {
-                wasProtectionHandled = it
-                if (it) {
-                    loadMessages()
-                } else {
-                    finish()
-                }
-            }
-        } else {
-            loadMessages()
-        }
+//        wasProtectionHandled = savedInstanceState.getBoolean(WAS_PROTECTION_HANDLED, false)
+//
+//        if (!wasProtectionHandled) {
+//            handleAppPasswordProtection {
+//                wasProtectionHandled = it
+//                if (it) {
+//                    loadMessages()
+//                } else {
+//                    finish()
+//                }
+//            }
+//        } else {
+//            loadMessages()
+//        }
+        loadMessages()
     }
 
     private fun setupOptionsMenu() {
