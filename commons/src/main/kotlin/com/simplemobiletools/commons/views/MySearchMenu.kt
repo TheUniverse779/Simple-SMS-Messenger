@@ -71,6 +71,13 @@ class MySearchMenu(context: Context, attrs: AttributeSet) : AppBarLayout(context
         (context as? Activity)?.hideKeyboard()
     }
 
+    fun back(){
+        binding.btnClose.setOnClickListener {
+            (context as? Activity)?.onBackPressed()
+        }
+
+    }
+
     fun getCurrentQuery() = binding.topToolbarSearch.text.toString()
 
     fun updateHintText(text: String) {

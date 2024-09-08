@@ -291,6 +291,8 @@ class MainActivity : SimpleActivity() {
             launchNewConversation()
         }
 
+        binding.mainMenu.back()
+
         binding.conversationsFab.setOnClickListener {
             launchNewConversation()
         }
