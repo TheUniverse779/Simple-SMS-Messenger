@@ -264,7 +264,22 @@ class ConversationsAdapter(
                             com.simplemobiletools.commons.R.string.protection_setup_successfully
                         }
 
-                        ConfirmationDialog(activity, "", confirmationTextId, com.simplemobiletools.commons.R.string.ok, 0) { }
+                        ConfirmationDialog(activity, "", confirmationTextId, com.simplemobiletools.commons.R.string.ok, 0) {
+                            val conversationsMarkedAsRead = currentList.filter { selectedKeys.contains(it.hashCode()) } as ArrayList<Conversation>
+                            var list = ArrayList<String>()
+                            ensureBackgroundThread {
+                                conversationsMarkedAsRead.forEach {
+                                    list.add(it.threadId.toString())
+                                    addProtectedMess(list)
+                                }
+
+                                refreshConversations()
+                                activity.runOnUiThread {
+                                    notifyDataSetChanged()
+                                }
+
+                            }
+                        }
 
 
 
@@ -281,6 +296,9 @@ class ConversationsAdapter(
                 }
 
                 refreshConversations()
+                activity.runOnUiThread {
+                    notifyDataSetChanged()
+                }
             }
         }
 

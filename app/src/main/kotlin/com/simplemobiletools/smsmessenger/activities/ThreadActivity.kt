@@ -146,22 +146,24 @@ class ThreadActivity : SimpleActivity() {
         bus = EventBus.getDefault()
         bus!!.register(this)
 
-        if (savedInstanceState == null) {
-            if (!wasProtectionHandled) {
-                handleAppPasswordProtection {
-                    wasProtectionHandled = it
-                    if (it) {
-                        clearAllMessagesIfNeeded {
-                            loadConversation()
-                        }
-                    } else {
-                        finish()
-                    }
-                }
-            } else {
-                loadConversation()
-            }
-        }
+//        if (savedInstanceState == null) {
+//            if (!wasProtectionHandled) {
+//                handleAppPasswordProtection {
+//                    wasProtectionHandled = it
+//                    if (it) {
+//                        clearAllMessagesIfNeeded {
+//                            loadConversation()
+//                        }
+//                    } else {
+//                        finish()
+//                    }
+//                }
+//            } else {
+//                loadConversation()
+//            }
+//        }
+
+        loadConversation()
 
         setupAttachmentPickerView()
         setupKeyboardListener()
@@ -233,18 +235,19 @@ class ThreadActivity : SimpleActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         wasProtectionHandled = savedInstanceState.getBoolean(WAS_PROTECTION_HANDLED, false)
 
-        if (!wasProtectionHandled) {
-            handleAppPasswordProtection {
-                wasProtectionHandled = it
-                if (it) {
-                    loadConversation()
-                } else {
-                    finish()
-                }
-            }
-        } else {
-            loadConversation()
-        }
+//        if (!wasProtectionHandled) {
+//            handleAppPasswordProtection {
+//                wasProtectionHandled = it
+//                if (it) {
+//                    loadConversation()
+//                } else {
+//                    finish()
+//                }
+//            }
+//        } else {
+//            loadConversation()
+//        }
+        loadConversation()
     }
 
     private fun refreshMenuItems() {
