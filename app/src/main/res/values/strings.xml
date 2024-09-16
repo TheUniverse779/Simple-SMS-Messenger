@@ -52,7 +52,7 @@
     <string name="title_activity_full_screen_game">Game</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="app_launcher_name">SMS Messenger</string>
+<!--    <string name="app_launcher_name">SMS Messenger</string>-->
     <string name="type_a_message">Type a message…</string>
     <string name="message_not_sent_short">Message not sent</string>
     <string name="message_not_sent_touch_retry">Not sent. Touch to retry.</string>

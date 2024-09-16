@@ -11,7 +11,11 @@ import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
+import android.view.View
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.isVisible
+import androidx.transition.Visibility
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.messenger.ads.MyAds
@@ -65,6 +69,35 @@ class MainActivity : SimpleActivity() {
             useTopSearchMenu = true
         )
 
+        binding.btnSetDefault.setOnClickListener {
+            if (isQPlus()) {
+                val roleManager = getSystemService(RoleManager::class.java)
+                if (roleManager!!.isRoleAvailable(RoleManager.ROLE_SMS)) {
+                    if (roleManager.isRoleHeld(RoleManager.ROLE_SMS)) {
+//                        askPermissions()
+                    } else {
+                        val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
+                        startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
+                    }
+                } else {
+                    toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
+                    finish()
+                }
+            } else {
+                if (Telephony.Sms.getDefaultSmsPackage(this) == packageName) {
+//                    askPermissions()
+                } else {
+                    val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
+                    intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, packageName)
+                    startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
+                }
+            }
+
+        }
+        binding.btnBack2.setOnClickListener {
+            onBackPressed()
+        }
+
 //        MyAds.initBannerIds(this@MainActivity)
 
         if (savedInstanceState == null) {
@@ -115,7 +148,7 @@ class MainActivity : SimpleActivity() {
         binding.conversationsFastscroller.updateColors(properPrimaryColor)
         binding.conversationsProgressBar.setIndicatorColor(properPrimaryColor)
         binding.conversationsProgressBar.trackColor = properPrimaryColor.adjustAlpha(LOWER_ALPHA)
-        checkShortcut()
+//        checkShortcut()
         (binding.conversationsFab.layoutParams as? CoordinatorLayout.LayoutParams)?.bottomMargin =
             navigationBarHeight + resources.getDimension(com.simplemobiletools.commons.R.dimen.activity_margin).toInt()
     }
@@ -207,6 +240,7 @@ class MainActivity : SimpleActivity() {
         super.onActivityResult(requestCode, resultCode, resultData)
         if (requestCode == MAKE_DEFAULT_APP_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
+                binding.layoutAsk.visibility = View.GONE
                 askPermissions()
             } else {
                 finish()
@@ -231,8 +265,9 @@ class MainActivity : SimpleActivity() {
                 if (roleManager.isRoleHeld(RoleManager.ROLE_SMS)) {
                     askPermissions()
                 } else {
-                    val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
-                    startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
+                    binding.layoutAsk.visibility = View.VISIBLE
+//                    val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
+//                    startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
                 }
             } else {
                 toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
@@ -242,9 +277,10 @@ class MainActivity : SimpleActivity() {
             if (Telephony.Sms.getDefaultSmsPackage(this) == packageName) {
                 askPermissions()
             } else {
-                val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
-                intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, packageName)
-                startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
+                binding.layoutAsk.visibility = View.VISIBLE
+//                val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
+//                intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, packageName)
+//                startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
             }
         }
     }
@@ -296,6 +332,8 @@ class MainActivity : SimpleActivity() {
         binding.conversationsFab.setOnClickListener {
             launchNewConversation()
         }
+
+
     }
 
     private fun getCachedConversations() {

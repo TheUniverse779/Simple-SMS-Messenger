@@ -47,6 +47,12 @@ public abstract class AppMainAdapter extends RecyclerView.Adapter<AppMainAdapter
         Glide.with(context)
                 .load(getIcon(messApps.get(position).getIcon()))
                 .into(holder.icon);
+        if(position == 0){
+            holder.menu.setVisibility(View.GONE);
+        }else {
+            holder.menu.setVisibility(View.VISIBLE);
+            holder.itemView.setOnTouchListener(new OnTouch());
+        }
 
 
 
@@ -86,12 +92,13 @@ public abstract class AppMainAdapter extends RecyclerView.Adapter<AppMainAdapter
             itemView.setOnClickListener(v ->
                     OnItemClick(messApps.get(getAdapterPosition()),getAdapterPosition()));
             itemView.setOnLongClickListener(v -> {
-                menu.performClick();
+                if(getAdapterPosition() != 0) {
+                    menu.performClick();
+                }
                 return true;
             });
 
 
-            itemView.setOnTouchListener(new OnTouch());
             menu.setOnTouchListener(new OnTouch());
 
             menu.setOnClickListener(v ->

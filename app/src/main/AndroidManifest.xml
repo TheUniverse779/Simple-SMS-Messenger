@@ -71,7 +71,7 @@
         android:allowBackup="true"
         android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_launcher_name"
+        android:label="@string/app_name"
         android:localeConfig="@xml/locale_config"
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
@@ -583,7 +583,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-7057107138215897~5082665169" />
 
         <activity android:name="com.google.android.gms.ads.AdActivity" />
         <activity android:name="com.messenger.activities.OverLay" android:theme="@style/noAnimTheme" android:screenOrientation="portrait" />
