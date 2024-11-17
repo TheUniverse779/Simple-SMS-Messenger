@@ -41,8 +41,13 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.messenger.App
+import com.messenger.ads.MyAds
+import com.messenger.utils.Constant
+import com.messenger.utils.PreferenceUtil
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.FeatureLockedDialog
 import com.simplemobiletools.commons.dialogs.PermissionRequiredDialog
@@ -117,6 +122,11 @@ class ThreadActivity : SimpleActivity() {
         super.onNewIntent(intent)
         finish()
         startActivity(intent)
+        if (PreferenceUtil.getInstance(App.get()).getValue(Constant.SharePrefKey.SMS_ADS, "no") == "yes") {
+            MyAds.showInterFull(this) { value: Any?, where: Int ->
+            }
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -217,7 +227,14 @@ class ThreadActivity : SimpleActivity() {
         if (binding.messageHolder.attachmentPickerHolder.isVisible()) {
             hideAttachmentPicker()
         } else {
-            super.onBackPressed()
+            if (PreferenceUtil.getInstance(App.get()).getValue(Constant.SharePrefKey.SMS_ADS, "no") == "yes") {
+                MyAds.showInterFull(this) { value: Any?, where: Int ->
+                    super.onBackPressed()
+                }
+            }else{
+                super.onBackPressed()
+            }
+
         }
     }
 

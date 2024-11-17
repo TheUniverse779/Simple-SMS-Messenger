@@ -9,6 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_marginTop="50dp"
         android:id="@+id/main_coordinator"
+        android:layout_above="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -217,5 +218,8 @@
 
         </LinearLayout>
     </LinearLayout>
+
+
+    <include android:id="@+id/banner" layout="@layout/ads_footer"/>
 
 </RelativeLayout>

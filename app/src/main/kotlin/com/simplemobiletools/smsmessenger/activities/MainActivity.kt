@@ -12,10 +12,7 @@ import android.os.Bundle
 import android.provider.Telephony
 import android.text.TextUtils
 import android.view.View
-import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.isVisible
-import androidx.transition.Visibility
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.messenger.ads.MyAds
@@ -97,8 +94,6 @@ class MainActivity : SimpleActivity() {
         binding.btnBack2.setOnClickListener {
             onBackPressed()
         }
-
-//        MyAds.initBannerIds(this@MainActivity)
 
         if (savedInstanceState == null) {
             checkAndDeleteOldRecycleBinMessages()
@@ -504,33 +499,40 @@ class MainActivity : SimpleActivity() {
         var listProtected = getAllProtectedMess();
 
         if (listProtected.size == 0){
-            Intent(this, ThreadActivity::class.java).apply {
-                putExtra(THREAD_ID, conversation.threadId)
-                putExtra(THREAD_TITLE, conversation.title)
-                putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
-                startActivity(this)
+            MyAds.showInterFull(this) { value: Any?, where: Int ->
+                Intent(this, ThreadActivity::class.java).apply {
+                    putExtra(THREAD_ID, conversation.threadId)
+                    putExtra(THREAD_TITLE, conversation.title)
+                    putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
+                    startActivity(this)
+                }
             }
+
         }else{
             if(checkMessInProtectOrNot(conversation.threadId.toString())){
                 handleAppPasswordProtection {
                     wasProtectionHandled = it
                     if (it) {
-                        Intent(this, ThreadActivity::class.java).apply {
-                            putExtra(THREAD_ID, conversation.threadId)
-                            putExtra(THREAD_TITLE, conversation.title)
-                            putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
-                            startActivity(this)
+                        MyAds.showInterFull(this) { value: Any?, where: Int ->
+                            Intent(this, ThreadActivity::class.java).apply {
+                                putExtra(THREAD_ID, conversation.threadId)
+                                putExtra(THREAD_TITLE, conversation.title)
+                                putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
+                                startActivity(this)
+                            }
                         }
                     } else {
 //                finish()
                     }
                 }
             }else{
-                Intent(this, ThreadActivity::class.java).apply {
-                    putExtra(THREAD_ID, conversation.threadId)
-                    putExtra(THREAD_TITLE, conversation.title)
-                    putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
-                    startActivity(this)
+                MyAds.showInterFull(this) { value: Any?, where: Int ->
+                    Intent(this, ThreadActivity::class.java).apply {
+                        putExtra(THREAD_ID, conversation.threadId)
+                        putExtra(THREAD_TITLE, conversation.title)
+                        putExtra(WAS_PROTECTION_HANDLED, wasProtectionHandled)
+                        startActivity(this)
+                    }
                 }
             }
         }
@@ -649,11 +651,13 @@ class MainActivity : SimpleActivity() {
             if (currAdapter == null) {
                 SearchResultsAdapter(this, searchResults, binding.searchResultsList, searchedText) {
                     hideKeyboard()
-                    Intent(this, ThreadActivity::class.java).apply {
-                        putExtra(THREAD_ID, (it as SearchResult).threadId)
-                        putExtra(THREAD_TITLE, it.title)
-                        putExtra(SEARCHED_MESSAGE_ID, it.messageId)
-                        startActivity(this)
+                    MyAds.showInterFull(this) { value: Any?, where: Int ->
+                        Intent(this, ThreadActivity::class.java).apply {
+                            putExtra(THREAD_ID, (it as SearchResult).threadId)
+                            putExtra(THREAD_TITLE, it.title)
+                            putExtra(SEARCHED_MESSAGE_ID, it.messageId)
+                            startActivity(this)
+                        }
                     }
                 }.apply {
                     binding.searchResultsList.adapter = this

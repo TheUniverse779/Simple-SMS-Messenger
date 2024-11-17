@@ -21,6 +21,7 @@ public class Constant {
         public static final String GAME1 = "game1";
         public static final String GAME2 = "game2";
         public static final String GAME = "game";
+        public static final String SMS_ADS = "sms_ads";
     }
 
     public static class CountDay{
@@ -82,6 +83,7 @@ public class Constant {
         public static final String GAME1 = "game1";
         public static final String GAME2 = "game2";
         public static final String GAME = "game";
+        public static final String SMS_ADS = "sms_ads";
     }
 
 

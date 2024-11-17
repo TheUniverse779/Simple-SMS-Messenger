@@ -28,8 +28,8 @@ android {
         applicationId = "com.messenger.allprivate"
         minSdk = project.libs.versions.app.build.minimumSDK.get().toInt()
         targetSdk = project.libs.versions.app.build.targetSDK.get().toInt()
-        versionName = "1.3.8"
-        versionCode = 138
+        versionName = "1.3.9"
+        versionCode = 139
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }

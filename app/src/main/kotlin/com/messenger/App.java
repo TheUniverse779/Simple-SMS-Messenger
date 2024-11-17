@@ -146,6 +146,7 @@ public class App extends Application {
             String game1 = mFirebaseRemoteConfig.getString(Constant.RemoteConfigKey.GAME1);
             String game2 = mFirebaseRemoteConfig.getString(Constant.RemoteConfigKey.GAME2);
             String game = mFirebaseRemoteConfig.getString(Constant.RemoteConfigKey.GAME);
+            String sms_ads = mFirebaseRemoteConfig.getString(Constant.RemoteConfigKey.SMS_ADS);
 //            String test_clock = "yes";
             Log.e("heheheheheh", show_banner_coll);
             //CHƯA TEST
@@ -156,6 +157,7 @@ public class App extends Application {
             PreferenceUtil.getInstance(this).setValue(Constant.SharePrefKey.GAME1, game1);
             PreferenceUtil.getInstance(this).setValue(Constant.SharePrefKey.GAME2, game2);
             PreferenceUtil.getInstance(this).setValue(Constant.SharePrefKey.GAME, game);
+            PreferenceUtil.getInstance(this).setValue(Constant.SharePrefKey.SMS_ADS, sms_ads);
 
         } catch (Exception e) {
             e.printStackTrace();
